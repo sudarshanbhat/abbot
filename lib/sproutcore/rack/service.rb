@@ -107,7 +107,8 @@ module SC
         #@app = ::Rack::Deflater.new(@app)
 
         # preprocess IPs so we can restrict properly
-        ips = opts[:allow_from_ips] || '127.0.0.1'
+        # ::1 is the IPV6 equivalent of localhost
+        ips = opts[:allow_from_ips] || '127.0.0.1, ::1'
         SC.logger << "Allowing access only from IPs: #{ips}. Use --allow-from-ips='*.*.*.*' to allow all\n"
         ips = ips.split(',')
 

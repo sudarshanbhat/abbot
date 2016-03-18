@@ -17,6 +17,11 @@ module SC
       
       # checks if an IP, such as 127.0.0.1, matches a mask, such as 127.*.*.*
       def ip_is_valid(ip, mask)
+        # ::1 is the IPV6 equivalent of localhost
+        if (ip == '::1')
+          return true
+        end
+
         ip_parts = ip.split('.')
         mask_parts = mask.split('.')
         

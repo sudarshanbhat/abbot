@@ -30,9 +30,10 @@ module SC
       :default => "Accept",
       :desc => "The SproutCore Accept file to determine which files to include. By default, Accept (if present)"
 
-    
+
     method_option :allow_from_ips,
-      :default => "127.0.0.1",
+      # ::1 is the IPV6 equivalent of localhost
+      :default => "127.0.0.1, ::1",
       :desc => "One or more (comma-separated) masks to accept requests from. " +
         "For example: 10.*.*.*,127.0.0.1"
     def server
